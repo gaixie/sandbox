@@ -9,7 +9,7 @@
 
   <groupId>org.gaixie.sandbox</groupId>
   <artifactId>sandbox</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>jar</packaging>
 
   <name>Sandbox</name>
@@ -20,7 +20,7 @@
     <connection>scm:git:ssh://git@github.com/gaixie/sandbox.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/gaixie/sandbox.git</developerConnection>
     <url>https://github.com/gaixie/sandbox</url>
-    <tag>HEAD</tag>
+    <tag>v0.1</tag>
   </scm>
 
   <properties>
