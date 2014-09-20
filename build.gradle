@@ -1,6 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'signing'
 
 group = 'org.gaixie.sandbox'
 archivesBaseName = "sandbox"
@@ -17,6 +16,14 @@ dependencies {
   compile 'commons-dbcp:commons-dbcp:1.4'
   compile 'com.google.inject:guice:4.0-beta4'
   testCompile 'junit:junit:4.11'
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      mavenLocal()
+    }
+  }
 }
 
 javadoc {
