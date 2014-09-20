@@ -4,17 +4,29 @@ apply plugin: 'signing'
 
 group = 'org.gaixie.sandbox'
 archivesBaseName = "sandbox"
-version = "0.2-SNAPSHOT"
+version = '0.2-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.7'
-    compile 'ch.qos.logback:logback-core:1.1.2'
-    compile 'commons-dbutils:commons-dbutils:1.6'
-    compile 'commons-dbcp:commons-dbcp:1.4'
-    compile 'com.google.inject:guice:4.0-beta4'
-    testCompile 'junit:junit:4.11'
+  compile 'org.slf4j:slf4j-api:1.7.7'
+  compile 'ch.qos.logback:logback-core:1.1.2'
+  compile 'commons-dbutils:commons-dbutils:1.6'
+  compile 'commons-dbcp:commons-dbcp:1.4'
+  compile 'com.google.inject:guice:4.0-beta4'
+  testCompile 'junit:junit:4.11'
+}
+
+javadoc {
+  options.encoding = 'UTF-8'
+  project.configure(options) {
+    memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+    charSet = 'UTF-8'
+    //docTitle = project.name
+    //windowTitle = project.name
+    header = "<b>$project.name</b>"
+    bottom = 'Copyright © 2014 <a href="http://www.gaixie.org">Gaixie.ORG</a>. All rights reserved.'
+  }
 }
