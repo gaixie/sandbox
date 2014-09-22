@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Sandbox 配置，加载 sandbox.properties 配置文件。
- * <p>
  */
 public class SandboxConfig {
     private static final Logger logger = LoggerFactory.getLogger(SandboxConfig.class);
