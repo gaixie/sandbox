@@ -1,0 +1,38 @@
+apply plugin: 'nexus'
+
+modifyPom {
+  project {
+    name 'Sandbox'
+    description 'Maven 与 gradle 的测试项目'
+    url 'http://gaixie.org'
+    packaging 'jar'
+
+    organization {
+      name 'Gaixie.ORG'
+      url 'http://www.gaixie.org'
+    }
+
+    licenses {
+      license {
+        name 'Apache License, Version 2.0'
+        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        distribution 'repo'
+      }
+    }
+
+    scm {
+      url 'https://github.com/gaixie/sandbox'
+      connection 'scm:git:https://github.com/gaixie/sandbox.git'
+      developerConnection 'scm:git://github.com/gaixie/sandbox.git'
+    }
+  }
+}
+
+nexus {
+  attachJavadoc = true
+  attachSources = true
+  attachTests = true
+  sign = true
+  repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+  snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
+}
