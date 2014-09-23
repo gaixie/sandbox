@@ -25,6 +25,14 @@ modifyPom {
       connection 'scm:git:https://github.com/gaixie/sandbox.git'
       developerConnection 'scm:git://github.com/gaixie/sandbox.git'
     }
+
+    developers {
+      developer {
+        id 'bitorb'
+        name 'Tommy Wang'
+        email 'bitorb@gmail.com'
+      }
+    }
   }
 }
 
