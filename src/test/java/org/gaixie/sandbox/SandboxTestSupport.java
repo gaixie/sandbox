@@ -42,6 +42,7 @@ public class SandboxTestSupport {
         try {
             conn = ConnectionUtils.getConnection();
             QueryRunner run = new QueryRunner();
+            run.update(conn, "DELETE from schema_changes"); 
             DbUtils.commitAndClose(conn);
         } catch(SQLException e) {
             DbUtils.rollbackAndCloseQuietly(conn);

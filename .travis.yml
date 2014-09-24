@@ -4,3 +4,15 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk7
+
+before_install:
+  - travis/before_install_schema.sh
+  
+before_script:
+  - travis/before_script_postgres.sh
+
+
+branches:
+  only:
+    - master
+    - develop
