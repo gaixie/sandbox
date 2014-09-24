@@ -9,11 +9,11 @@
 #     注意集成时代码库的 master 和 develop 分支也要和 jibu-schema 项目的分支对应。
 
 cd $HOME
-git clone --quiet git@github.com:gaixie/jibu-schema.git
+git clone --quiet https://github.com/gaixie/jibu-schema.git
 
 # 如果当前集成的分支是 develop，将 jibu-schema 项目的分支也 checkout 到 develop 上。
 if [[ $TRAVIS_BRANCH == 'develop' ]]
 then
-  cd jibu-schema/
+  cd $HOME/jibu-schema/
   git checkout --track origin/develop
 fi
