@@ -11,7 +11,7 @@ addons:
 before_install:
   - git clone --quiet https://github.com/gaixie/jibu-schema.git $HOME/jibu-schema
   # 如果当前集成的分支是 develop，将 jibu-schema 项目的分支也 checkout 到 develop 上。  
-  - if [[ $TRAVIS_BRANCH == 'develop' ]]; then git -C $HOME/jibu-schema/ checkout --track origin/develop; fi
+  - if [[ $TRAVIS_BRANCH == "develop" ]]; then git -C $HOME/jibu-schema/ checkout --track origin/develop; fi
   
 before_script:
   - psql -c "CREATE USER jibu_db_user WITH PASSWORD '000000';" -U postgres
