@@ -7,7 +7,11 @@ jdk:
 
 addons:
   postgresql: "9.3"
-  
+
+env:
+  global:
+    - secure: "iObS4iIBF6cyWL8tZxQh4GVTTZ4x21ckgpQruFS2KGOfLfKKpDxJc/gcrCCJWZeQ7NUf7UWAIYqKQbMG+M+v1EDyTHbUMMzetnVY7tZLUgD/TFre6w7jTiD0zIQn1LpW4WgrPNmozxhEhwHbh26zdU3DuRx0vzmhQmtN3ql7/iI="
+
 before_install:
   - git clone --quiet https://github.com/gaixie/jibu-schema.git $HOME/jibu-schema
   - if [[ $TRAVIS_BRANCH == "develop" ]]; then git -C $HOME/jibu-schema/ checkout --track origin/develop; fi
@@ -19,6 +23,9 @@ before_script:
   - cat $HOME/jibu-schema/postgresql/tables/tables*.sql > $HOME/schema.sql
   - cat $HOME/jibu-schema/postgresql/tables/comments*.sql >> $HOME/schema.sql
   - psql -U jibu_db_user -d jibu_db -1 -f $HOME/schema.sql
+
+after_success:
+  - .utility/publish-javadoc.sh
   
 branches:
   only:
