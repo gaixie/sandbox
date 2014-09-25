@@ -28,7 +28,13 @@ dependencies {
   compile 'commons-dbutils:commons-dbutils:1.6'
   compile 'commons-dbcp:commons-dbcp:1.4'
   compile 'com.google.inject:guice:4.0-beta4'
+  runtime 'postgresql:postgresql:9.1-901.jdbc4'
   testCompile 'junit:junit:4.11'
+}
+
+test {
+  // show standard out and standard error of the test JVM(s) on the console
+  testLogging.showStandardStreams = true
 }
 
 javadoc {
