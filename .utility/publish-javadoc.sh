@@ -18,7 +18,7 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
 
     cd gh-pages
 
-    if ["$TRAVIS_BRANCH" == "master" ]; then
+    if [ "$TRAVIS_BRANCH" == "master" ]; then
         git rm -rf ./core-api/latest/javadoc
         cp -Rf $HOME/javadoc-latest ./core-api/latest/javadoc
     else
@@ -27,7 +27,7 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     fi
 
     git add -f .
-    git commit -m "Lastest snapshot javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
+    git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
     git push -fq origin gh-pages > /dev/null
 
     echo -e "Published Javadoc to gh-pages.\n"
