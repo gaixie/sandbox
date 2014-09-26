@@ -21,11 +21,12 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
 
     if [ "$TRAVIS_BRANCH" == "master" ]; then
         git rm -rf ./core-api/latest ./core-test/latest
+        mkdir -p ./core-api ./core-test
         cp -Rf $HOME/javadoc-latest ./core-api/latest
         cp -Rf $HOME/test-latest ./core-test/latest
     else
         git rm -rf ./core-api/snapshot ./core-test/snapshot
-        mkdir -p ./core-api/snapshot ./core-test/snapshot
+        mkdir -p ./core-api ./core-test
         cp -Rf $HOME/javadoc-latest ./core-api/snapshot
         cp -Rf $HOME/test-latest ./core-test/snapshot
     fi
