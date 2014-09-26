@@ -17,6 +17,7 @@ before_install:
   - if [[ $TRAVIS_BRANCH == "develop" ]]; then git -C $HOME/jibu-schema/ checkout --track origin/develop; fi
   
 before_script:
+  - export DBUSER=jibu_db_user
   - psql -c "CREATE USER jibu_db_user WITH PASSWORD '000000';" -U postgres
   - psql -c "CREATE DATABASE jibu_db OWNER jibu_db_user ENCODING 'UTF8';" -U postgres
 

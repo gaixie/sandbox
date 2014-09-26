@@ -10,8 +10,9 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     echo -e "Publishing javadoc & report...\n"
 
     cp -R build/docs/javadoc $HOME/javadoc-latest
-    cp -R build/reports/tests $HOME/report-latest
+    cp -R build/reports/tests $HOME/test-latest
 
+    echo -e "dbuser = $DBUSER\n"
     cd $HOME
     git config --global user.email "travis@travis-ci.org"
     git config --global user.name "travis-ci"
@@ -20,15 +21,14 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     cd gh-pages
 
     if [ "$TRAVIS_BRANCH" == "master" ]; then
-        git rm -rf ./core-api/latest/javadoc ./core-report/latest/test
-        mkdir -p ./core-api/latest ./core-report/latest
-        cp -Rf $HOME/javadoc-latest ./core-api/latest/javadoc
-        cp -Rf $HOME/report-latest ./core-report/latest/test
+        git rm -rf ./core-api/latest ./core-test/latest
+        cp -Rf $HOME/javadoc-latest ./core-api/latest
+        cp -Rf $HOME/test-latest ./core-test/latest
     else
-        git rm -rf ./core-api/snapshot/javadoc ./core-report/snapshot/test
-        mkdir -p ./core-api/snapshot ./core-report/snapshot
-        cp -Rf $HOME/javadoc-latest ./core-api/snapshot/javadoc
-        cp -Rf $HOME/report-latest ./core-report/snapshot/test
+        git rm -rf ./core-api/snapshot ./core-report/snapshot
+        mkdir -p ./core-api/snapshot ./core-test/snapshot
+        cp -Rf $HOME/javadoc-latest ./core-api/snapshot
+        cp -Rf $HOME/test-latest ./core-test/snapshot
     fi
 
     git add -f .
