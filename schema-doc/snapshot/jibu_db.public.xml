@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="jibu_db" schema="public" type="PostgreSQL - 9.3.5">
+   <tables>
+      <table name="schema_changes" numRows="0" remarks="Schema 版本变动" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('schema_changes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="AUTO INCREMENT" size="10" type="serial"/>
+         <column autoUpdated="false" digits="0" id="1" name="major" nullable="false" remarks="主版本号" size="5" type="int2"/>
+         <column autoUpdated="false" digits="0" id="2" name="minor" nullable="false" remarks="次版本号" size="5" type="int2"/>
+         <column autoUpdated="false" digits="0" id="3" name="revision" nullable="false" remarks="修订版本号" size="5" type="int2"/>
+         <column autoUpdated="false" digits="0" id="4" name="hash" nullable="false" remarks="Git 中 本次 commit 的 hash 码" size="64" type="varchar"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="5" name="applied_ts" nullable="false" remarks="Schema 修改时间" size="35" type="timestamptz"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="schema_changes_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="schema_changes_hash_key" unique="true">
+            <column ascending="true" name="hash"/>
+         </index>
+         <index name="schema_changes_major_minor_revision_key" unique="true">
+            <column ascending="true" name="major"/>
+            <column ascending="true" name="minor"/>
+            <column ascending="true" name="revision"/>
+         </index>
+      </table>
+   </tables>
+</database>
