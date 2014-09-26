@@ -12,7 +12,6 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     cp -R build/docs/javadoc $HOME/javadoc-latest
     cp -R build/reports/tests $HOME/test-latest
 
-    echo -e "dbuser = $DBUSER\n"
     cd $HOME
     git config --global user.email "travis@travis-ci.org"
     git config --global user.name "travis-ci"
@@ -25,7 +24,7 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
         cp -Rf $HOME/javadoc-latest ./core-api/latest
         cp -Rf $HOME/test-latest ./core-test/latest
     else
-        git rm -rf ./core-api/snapshot ./core-report/snapshot
+        git rm -rf ./core-api/snapshot ./core-test/snapshot
         mkdir -p ./core-api/snapshot ./core-test/snapshot
         cp -Rf $HOME/javadoc-latest ./core-api/snapshot
         cp -Rf $HOME/test-latest ./core-test/snapshot
