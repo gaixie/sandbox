@@ -7,9 +7,10 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     [ "$TRAVIS_JDK_VERSION" == "oraclejdk8" ] && \
     [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
-    echo -e "Publishing javadoc...\n"
+    echo -e "Publishing javadoc & report...\n"
 
     cp -R build/docs/javadoc $HOME/javadoc-latest
+    cp -R build/reports/tests $HOME/report-latest
 
     cd $HOME
     git config --global user.email "travis@travis-ci.org"
@@ -19,16 +20,18 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/sandbox" ] && \
     cd gh-pages
 
     if [ "$TRAVIS_BRANCH" == "master" ]; then
-        git rm -rf ./core-api/latest/javadoc
+        git rm -rf ./core-api/latest/javadoc ./core-report/latest/test
         cp -Rf $HOME/javadoc-latest ./core-api/latest/javadoc
+        cp -Rf $HOME/report-latest ./core-report/latest/test
     else
-        git rm -rf ./core-api/snapshot/javadoc
+        git rm -rf ./core-api/snapshot/javadoc ./core-report/snapshot/test
         cp -Rf $HOME/javadoc-latest ./core-api/snapshot/javadoc
+        cp -Rf $HOME/report-latest ./core-report/snapshot/test
     fi
 
     git add -f .
-    git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
+    git commit -m "Lastest javadoc & report on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
     git push -fq origin gh-pages > /dev/null
 
-    echo -e "Published Javadoc to gh-pages.\n"
+    echo -e "Published Javadoc & Report to gh-pages.\n"
 fi
